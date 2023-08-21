@@ -1,0 +1,49 @@
+.cards{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
+
+
+.dlink{
+    margin:3rem 0rem 1rem 15rem;
+}
+.district--name{
+color: var(--black, #0B0C0C);
+font-family: Public Sans;
+font-size: 2.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: 120%; 
+margin:3rem 0rem 2rem 15rem;
+}
+
+.nominee-btn{
+    border-radius: 4rem;
+background: #006EB5;
+padding: 1rem 2rem;
+text-transform: uppercase;
+color: #FFF;
+text-align: center;
+font-family: Public Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 700;
+line-height: 1rem;
+border:none;
+margin:3rem;
+margin-right:23rem;
+
+cursor:pointer;
+
+
+}
+
+
+.btn-wrapper{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    margin: 0 5rem;
+}
+

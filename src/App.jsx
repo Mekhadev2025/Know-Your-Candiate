@@ -3,17 +3,38 @@ import './App.css'
 import Navbar from "./components/navbar/Navbar"
 import Home from  "./pages/Home/Home"
 import Footer from "./components/footer/Footer"
-function App() {
+import Nominee from  "./pages/Nominee/Nominee"
+import District from './pages/District/District'
 
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+function App() {
+     
+    
 
   return (
     <>
-     <Navbar/>
+
+
+<Navbar/>
+
+{/* 
+<BrowserRouter> 
+      <Routes>
+        <Route path="/" element={<Home />}>    
+        </Route>
+        <Route path="/about" element={<Nominee />}>    
+        </Route>
+      </Routes>
     
-     <Home/>
-     <hr></hr>
-     <Footer/>
-    
+    </BrowserRouter> */}
+
+
+
+
+<District district="Trivandrum"/>
+
+<Footer/>
     </>
   )
 }
