@@ -17,7 +17,7 @@ const [data,setData]=useState([])
 
 useEffect(()=>{
   async function fetchItem(){
-    const response=await fetch("http://localhost:5000/api/data");
+    const response=await fetch("http://localhost:5000/api/districts/district=tvm");
     const newRes=await response.json();
     // console.log(newRes);
     setData(newRes);

@@ -9,7 +9,7 @@ const Form = () => {
     console.log("Form submitted");
     event.preventDefault();
 
-    await fetch("http://localhost:5000/api/data", {
+    await fetch("http://localhost:5000/api/districts/district=kollam", {
       method: "POST",
       body: JSON.stringify({
         name,
@@ -26,8 +26,11 @@ const Form = () => {
     console.log("heyyyy");
   };
 
+
+
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form  onSubmit={handleSubmit}>
       <label htmlFor="name-input">Name</label>
       <input
         placeholder="name"
