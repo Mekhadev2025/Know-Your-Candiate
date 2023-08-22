@@ -9,30 +9,28 @@ import Form from "./pages/Form/Form"
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-     
-    
-
   return (
     <>
-
-
 <Navbar/>
 
-{/* 
+
 <BrowserRouter> 
       <Routes>
         <Route path="/" element={<Home />}>    
         </Route>
-        <Route path="/about" element={<Nominee />}>    
+        <Route path="/nominee" element={<Form/>}>    
         </Route>
+        <Route path="/district" element={<District district="Trivandrum" />}>    
+        </Route>
+
       </Routes>
     
-    </BrowserRouter> */}
+    </BrowserRouter>
 
 {/* <Form/> */}
 
-
-<District district="Trivandrum"/>
+{/* 
+<District district="Trivandrum"/> */}
 
 <Footer/>
     </>
