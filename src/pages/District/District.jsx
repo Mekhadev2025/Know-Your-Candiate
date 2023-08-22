@@ -9,25 +9,24 @@ import Card from "../../components/Card/Card";
 import dummyData   from "../../dummyData";
     
 const District = (props) => {
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
-  //   const data=async ()=>{
-  //     try{
-  //      const response=await axios.get("url");
-  //     }
-  //     catch (err){
-  //     console.log(err);
-  //     }
-
-  //   }
   
 
 const totalCount=props.totalCount
+const [data,setData]=useState([])
 
+useEffect(()=>{
+  async function fetchItem(){
+    const response=await fetch("http://localhost:5000/api/data");
+    const newRes=await response.json();
+    // console.log(newRes);
+    setData(newRes);
 
+  }
+  fetchItem();
+},[])
 
+// console.log(data)
   return (
     <section className="district--section">
       <div className="dlink">{`Home > ${props.district}`}</div>
@@ -36,7 +35,7 @@ const totalCount=props.totalCount
       <div className="cards">
 
 
-      {dummyData.map((item) => (
+      {data.map((item) => (
         <Card
           key={item.id}
           photo={photo}

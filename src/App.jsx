@@ -5,7 +5,7 @@ import Home from  "./pages/Home/Home"
 import Footer from "./components/footer/Footer"
 import Nominee from  "./pages/Nominee/Nominee"
 import District from './pages/District/District'
-
+import Form from "./pages/Form/Form"
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
@@ -29,7 +29,7 @@ function App() {
     
     </BrowserRouter> */}
 
-
+{/* <Form/> */}
 
 
 <District district="Trivandrum"/>

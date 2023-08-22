@@ -1,6 +1,6 @@
 .card--container {
   margin: 0rem 15rem;
-  width:fit-content;
+  width: fit-content;
   border-radius: 0.25rem;
   border: 1px solid #d0ccc8;
   background: var(--white, #fff);
@@ -8,10 +8,8 @@
   display: flex;
 
   align-items: center;
-  gap:3rem;
+  gap: 3rem;
 }
-
-
 
 .candidate--img {
   margin: 1rem;
@@ -27,31 +25,28 @@
   line-height: 140%;
 }
 
-.candidate--count{
-   width: 4rem;
-   height: 4rem; 
-   background:pink;
-  
-   display:flex;
-   justify-content:center;
-   align-items:center;
-   border-radius:4rem;
+.candidate--count {
+  width: 4rem;
+  height: 4rem;
+  background: pink;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4rem;
 }
 
-
-.card--btn{
-
-border-radius: 4rem;
-background: black;
-border:none;
-height:fit-content;
-padding:0.75rem 2rem 0.75rem 2rem;
-color: #FFF;
-text-align: center;
-font-family: Public Sans;
-font-size: 1rem;
-font-style: normal;
-font-weight: 700;
-line-height: 1rem;
+.card--btn {
+  border-radius: 4rem;
+  background: black;
+  border: none;
+  height: fit-content;
+  padding: 0.75rem 2rem 0.75rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-family: Public Sans;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1rem;
 }
