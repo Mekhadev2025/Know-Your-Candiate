@@ -1,0 +1,51 @@
+form{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    margin-top:1.2rem;
+}
+
+
+input{
+border-radius: 0.25rem;
+border: 1px solid #C7C4C2;
+color:  #0B0C0C;
+font-family: Public Sans;
+font-size: 1.125rem;
+font-style: normal;
+font-weight: 600;
+line-height: 1.125rem;
+padding:1rem;
+}
+
+textarea{
+    height:10rem;
+    border-radius: 0.25rem;
+border: 1px solid #C7C4C2;
+color:  #0B0C0C;
+font-family: Public Sans;
+font-size: 1.125rem;
+font-style: normal;
+font-weight: 600;
+line-height: 1.125rem;
+padding:1rem;
+margin-bottom:2.5rem;
+}
+
+.form-submit{
+ 
+width: 32.5rem;
+padding: 1.25rem 2rem;
+text-align: center;
+font-family: Public Sans;
+font-size: 1rem;
+font-style: normal;
+font-weight: 700;
+line-height: 1rem;
+text-transform:uppercase;
+gap: 0.625rem;
+color:white;
+border-radius: 4rem;
+background: #0B0C0C;
+cursor:pointer;
+}

@@ -18,8 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}>    
         </Route>
-        <Route path="/nominee" element={<Form/>}>    
-        </Route>
+        {/* <Route path="/nominee" element={<Form/>}>    
+        </Route> */}
         <Route path="/district" element={<District district="Trivandrum" />}>    
         </Route>
 

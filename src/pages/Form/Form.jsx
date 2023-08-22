@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../Form/Form.css"
 const Form = () => {
   const [name, setName] = useState("");
   const [party, setParty] = useState("");
@@ -26,14 +26,11 @@ const Form = () => {
     console.log("heyyyy");
   };
 
-
-
-
   return (
     <form  onSubmit={handleSubmit}>
       <label htmlFor="name-input">Name</label>
       <input
-        placeholder="name"
+      
         id="name-input"
         value={name}
         onChange={(e) => {
@@ -42,7 +39,7 @@ const Form = () => {
       />
       <label htmlFor="party-input">Party</label>
       <input
-        placeholder="Party"
+     
         id="party-input"
         value={party}
         onChange={(e) => {
@@ -51,15 +48,15 @@ const Form = () => {
       />
 
       <label htmlFor="desc-input">Description</label>
-      <input
-        placeholder="description"
+      <textarea
+        
         id="desc-input"
         value={desc}
         onChange={(e) => {
           setDesc(e.target.value);
         }}
       />
-      <button>Submit</button>
+      <button className="form-submit">Submit</button>
     </form>
   );
 };

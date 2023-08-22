@@ -5,22 +5,23 @@ import photo from "../../assets/tharoor.png";
 import party from "../../assets/inc.svg";
 import {Link }from "react-router-dom"
 import Card from "../../components/Card/Card";
-
-import dummyData from "../../dummyData";
+import Popup from "../../components/Popup/Popup";
+import Form from "../Form/Form"
+// import dummyData from "../../dummyData";
 
 const District = (props) => {
-  const handleNominee = () => {
-    // props.history.push("/nominee")
-    console.log(props.history);
-  };
+  // const handleNominee = () => {
+  //   // props.history.push("/nominee")
+  //   console.log(props.history);
+  // };
 
   const totalCount = props.totalCount;
   const [data, setData] = useState([]);
-
+  const [buttonPopup,setPopup]=useState(false)
   useEffect(() => {
     async function fetchItem() {
       const response = await fetch(
-        "http://localhost:5000/api/districts/district=tvm"
+        "http://localhost:5000/api/districts/district=kollam"
       );
       const newRes = await response.json();
       // console.log(newRes);
@@ -50,15 +51,21 @@ const District = (props) => {
 
       <div className="btn-wrapper">
        
-            <Link to="/nominee">
-                    <button className="nominee-btn" onClick={handleNominee}>
+            
+                    <button className="nominee-btn"  onClick={()=>{
+                      setPopup(true)
+                    }} >
                       Add Your Nominee
                     </button>
-            </Link>
+        
 
 
       
       </div>
+      <Popup trigger={buttonPopup} setTrigger={setPopup}>
+        
+        <Form/>
+      </Popup>
     </section>
   );
 };
