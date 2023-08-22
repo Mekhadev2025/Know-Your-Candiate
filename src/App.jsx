@@ -9,6 +9,10 @@ import Form from "./pages/Form/Form"
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
+   const  dis=document.getElementById("Trivandrum")
+  dis.getAttribute("value")
+  console.log("value")
+ 
   return (
     <>
 <Navbar/>
@@ -20,7 +24,7 @@ function App() {
         </Route>
         {/* <Route path="/nominee" element={<Form/>}>    
         </Route> */}
-        <Route path="/district" element={<District district="Trivandrum" />}>    
+        <Route path="/district" element={<District />}>    
         </Route>
 
       </Routes>

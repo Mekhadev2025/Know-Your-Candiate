@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "../Home/Home.css";
 import flag from "../../assets/flag.png";
 import ppl from "../../assets/ppl.png";
@@ -8,6 +9,17 @@ const Home = () => {
     <main>
       <section>
         <Map />
+        <Link  to={{
+         pathname: "/district",
+         state:{district:"tvm"}
+        }
+      }
+      value="trivandrum"
+      
+        id="Trivandrum">TVM
+        </Link>
+        <Link to="/district" value="kollam">Kollam
+        </Link>
       </section>
       <section className="about">
         <h1 className="header">Choose your candidate</h1>

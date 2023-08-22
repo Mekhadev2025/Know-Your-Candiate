@@ -15,13 +15,16 @@ const District = (props) => {
   //   console.log(props.history);
   // };
 
+  console.log(props)
+  const dis=props.location.this.state.district;
+  console.log("Dis ==",dis)
   const totalCount = props.totalCount;
   const [data, setData] = useState([]);
   const [buttonPopup,setPopup]=useState(false)
   useEffect(() => {
     async function fetchItem() {
       const response = await fetch(
-        "http://localhost:5000/api/districts/district=kollam"
+      `  http://localhost:5000/api/districts/district=${dis}`
       );
       const newRes = await response.json();
       // console.log(newRes);
