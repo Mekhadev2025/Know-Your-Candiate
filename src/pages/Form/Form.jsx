@@ -11,11 +11,11 @@ const Form = () => {
   const selectedDistrict = queryParams.get('district');
   console.log("selected district=",selectedDistrict);
  
-
+  const [open,setOpen]=useState(true);
   const handleSubmit = async (event) => {
     console.log("Form submitted");
     event.preventDefault();
-
+    
 
     await fetch(`http://localhost:5000/api/districts/district=${selectedDistrict}`, {
       method: "POST",
@@ -32,11 +32,23 @@ const Form = () => {
     setParty(" ")
     setDesc(" ")
     console.log("heyyyy");
+    setOpen(false);
   };
 
   return (
+
+
+    <>
+     <h1 className="pop-header">
+             Add Your Nominee
+             </h1>
     <form  onSubmit={handleSubmit}>
-      <label htmlFor="name-input">Name</label>
+      {
+        (open===true)?(
+          <>
+          
+         
+ <label htmlFor="name-input">Name</label>
       <input
          required
         id="name-input"
@@ -65,8 +77,18 @@ const Form = () => {
           setDesc(e.target.value);
         }}
       />
-      <button className="form-submit">Submit</button>
+      <button className="form-submit">Submit</button> 
+      </>
+        ):<div style={{display:"flex",justifyContent:"center",alignItems:"center",fontWeight:"200"}}>
+        Thanks!!!</div>
+      }
+
+
+     
     </form>
+    
+    </>
+    
   );
 };
 

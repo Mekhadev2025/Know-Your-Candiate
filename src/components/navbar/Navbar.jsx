@@ -9,16 +9,19 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="header">
+      <div className="header" >
+     
         <span className='header1'>CHOOSE YOUR </span>
         <span className='header2'>CANDIDATE</span>
+     
       </div>
 
       <button className='nav-btn' onClick={()=>{
+                    //  alert("Click any district")
                       setPopup(true)
                     }}>
         Add your Nomination
-        {/* <Link to="/about">Go to About Page</Link> */}
+ 
       </button>
 
       <Popup trigger={buttonPopup} setTrigger={setPopup} >
@@ -30,3 +33,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

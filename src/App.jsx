@@ -3,7 +3,7 @@ import './App.css'
 import Navbar from "./components/navbar/Navbar"
 import Home from  "./pages/Home/Home"
 import Footer from "./components/footer/Footer"
-
+import Login from "./pages/Login/Login"
 import District from './pages/District/District'
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,7 +11,7 @@ function App() {
 
  
    
- const [val,setVal]=useState("kollam")
+//  const [val,setVal]=useState("kollam")
   return (
     <>
 <Navbar/>
@@ -29,7 +29,8 @@ function App() {
 
         />}>    
         </Route>
-
+        <Route path="/login" element={<Login />}>    
+        </Route>
       </Routes>
     
     </BrowserRouter>

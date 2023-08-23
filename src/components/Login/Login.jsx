@@ -1,7 +1,7 @@
 import React from 'react'
-import "../Popup/Popup.css"
+
 import closeimg from "../../assets/close.svg"
-function Popup(props) {
+function Login(props) {
   return (props.trigger)?(
     <div className="popup">
         <div className="popup-inner">
@@ -9,11 +9,12 @@ function Popup(props) {
                 props.setTrigger(false)
             }} >
             </img>
-            
+            <h1 className="pop-header">
+               Login With OTP
+             </h1>
             {props.children}
         </div>
     </div>
   ):""
 }
-
-export default Popup;
+export default Login

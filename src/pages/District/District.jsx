@@ -8,20 +8,25 @@ import {Link }from "react-router-dom"
 import Card from "../../components/Card/Card";
 import Popup from "../../components/Popup/Popup";
 import Form from "../Form/Form"
-
+import Login from "../Login/Login"
+import Loginform from "../../components/Loginform/Loginform"
 
 const District = (props) => {
 
+  const [totalCount,setTotal]=useState(0)
+  const  [popper,setPopper]=useState(0);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedDistrict = queryParams.get('district');
   console.log(selectedDistrict);
   const dist=selectedDistrict[0].toUpperCase()+selectedDistrict.substring(1)
-  console.log("dist=",dist)
-  const totalCount = props.totalCount;
+  console.log("dist=",dist) 
+
+
   const [data, setData] = useState([]);
   const [buttonPopup,setPopup]=useState(false)
+  const [loginPopup,setLogin]=useState(false)
   useEffect(() => {
     async function fetchItem() {
       const response = await fetch(
@@ -32,6 +37,32 @@ const District = (props) => {
     }
     fetchItem();
   }, []);
+
+  
+
+  const incrementTotal=()=>{
+    setTotal(totalCount+1)
+  }
+
+
+  const decrementTotal=()=>{
+    setTotal(totalCount-1)
+  }
+
+
+  console.log(totalCount);
+  // const togglePopup = () => {
+  //   setShowPopup(!showPopup);
+  // };
+
+
+     function incrementPopper(){
+             setPopper(3);
+    }
+
+    function incrementLogin(){
+          setLogin(true)
+    }
 
   return (
     <section className="district--section">
@@ -56,6 +87,10 @@ const District = (props) => {
             party={party}
             voteCount={item.voteCount}
             desc={item.desc}
+            incrementTotal={incrementTotal}
+            decrementTotal={decrementTotal}
+            incrementPopper={incrementPopper}
+            incrementLogin={incrementLogin}
           />
         )))}
       </div>
@@ -64,7 +99,8 @@ const District = (props) => {
        
             
                     <button className="nominee-btn"  onClick={()=>{
-                      setPopup(true)
+                      setPopup(true) 
+                      setPopper(1)
                     }} >
                       Add Your Nominee
                     </button>
@@ -73,10 +109,28 @@ const District = (props) => {
 
       
       </div>
-      <Popup trigger={buttonPopup} setTrigger={setPopup}>
-        
-        <Form/>
+
+
+      <>
+      {
+        popper===1?(
+          <Popup trigger={buttonPopup} setTrigger={setPopup}>
+      <Form/>
       </Popup>
+        ):""}
+  
+      {
+        popper===3?(
+       
+          <Popup trigger={loginPopup} setTrigger={setLogin}>
+                 <Login/>
+        </Popup>
+        ):" "
+      
+      }
+        
+      </>
+
     </section>
   );
 };
