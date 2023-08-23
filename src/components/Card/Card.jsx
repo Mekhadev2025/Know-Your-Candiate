@@ -1,12 +1,16 @@
+
+//from distict.jsx
+
 import React from "react";
 import "../Card/Card.css";
+
+
 const Card = (props) => {
    
 
 
 
-  let x = props.voteCount;
-  const [count, setCount] = React.useState(x);
+  const [count, setCount] = React.useState(0);
   // if(count==)
   const [checked, setCheck] = React.useState(0);
   const incrementCount = () => {

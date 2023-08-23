@@ -2,19 +2,15 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "../District/District.css";
-import photo from "../../assets/tharoor.png";
+import photo from "../../assets/pic.jpg";
 import party from "../../assets/inc.svg";
 import {Link }from "react-router-dom"
 import Card from "../../components/Card/Card";
 import Popup from "../../components/Popup/Popup";
 import Form from "../Form/Form"
-// import dummyData from "../../dummyData";
+
 
 const District = (props) => {
-  // const handleNominee = () => {
-  //   // props.history.push("/nominee")
-  //   console.log(props.history);
-  // };
 
 
   const location = useLocation();
@@ -23,8 +19,6 @@ const District = (props) => {
   console.log(selectedDistrict);
   const dist=selectedDistrict[0].toUpperCase()+selectedDistrict.substring(1)
   console.log("dist=",dist)
-  // const dis=props.district;
-
   const totalCount = props.totalCount;
   const [data, setData] = useState([]);
   const [buttonPopup,setPopup]=useState(false)
@@ -34,13 +28,11 @@ const District = (props) => {
       `  http://localhost:5000/api/districts/district=${selectedDistrict}`
       );
       const newRes = await response.json();
-      // console.log(newRes);
       setData(newRes);
     }
     fetchItem();
   }, []);
-  
-  // console.log(data)
+
   return (
     <section className="district--section">
 
@@ -52,12 +44,11 @@ const District = (props) => {
         
         </div>
 
-
-
-
       <h1 className="district--name">{dist}</h1>
       <div className="cards">
-        {data.map((item) => (
+        {    data.length===0?(
+        <h2 className="no-results">Nothing to display</h2>):(
+        data.map((item) => (
           <Card
             key={item.id}
             photo={photo}
@@ -66,7 +57,7 @@ const District = (props) => {
             voteCount={item.voteCount}
             desc={item.desc}
           />
-        ))}
+        )))}
       </div>
 
       <div className="btn-wrapper">

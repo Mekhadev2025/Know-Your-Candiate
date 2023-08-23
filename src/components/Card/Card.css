@@ -13,6 +13,9 @@
 
 .candidate--img {
   margin: 1rem;
+  width:6.25rem;
+  height:6.25rem;
+  border-radius:6rem;
 }
 
 .candidiate--desc {
@@ -23,6 +26,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  max-height:4rem;
+  overflow:hidden;
 }
 
 .candidate--count {
@@ -49,4 +54,5 @@
   font-style: normal;
   font-weight: 700;
   line-height: 1rem;
+  cursor:pointer;
 }

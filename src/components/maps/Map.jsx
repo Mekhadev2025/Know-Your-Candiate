@@ -700,7 +700,7 @@ const Map = () => {
               fontSize="16"
               fontWeight="500"
               letterSpacing="0em"
-              textDecoration="underline"
+              // textDecoration="underline"
             >
               <tspan x="937.188" y="18.2">
                 (Leading K Muraleedharan)
