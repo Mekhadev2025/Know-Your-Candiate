@@ -14,7 +14,10 @@ footer{
      border-top:1px solid grey;
      height:auto;
      align-items:center;
-
+     position: fixed;
+     bottom: 0;
+     width:100%;
+     
 }
 .copy{
      margin:2rem 0rem 2rem 5rem;

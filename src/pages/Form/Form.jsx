@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import "../Form/Form.css"
+import { useLocation } from "react-router-dom";
 const Form = () => {
   const [name, setName] = useState("");
   const [party, setParty] = useState("");
   const [desc, setDesc] = useState("");
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const selectedDistrict = queryParams.get('district');
+  console.log("selected district=",selectedDistrict);
+ 
+
   const handleSubmit = async (event) => {
     console.log("Form submitted");
     event.preventDefault();
 
-    await fetch("http://localhost:5000/api/districts/district=kollam", {
+
+    await fetch(`http://localhost:5000/api/districts/district=${selectedDistrict}`, {
       method: "POST",
       body: JSON.stringify({
         name,

@@ -17,7 +17,7 @@ const Navbar = () => {
       <button className='nav-btn' onClick={()=>{
                       setPopup(true)
                     }}>
-        Add you Nomination
+        Add your Nomination
         {/* <Link to="/about">Go to About Page</Link> */}
       </button>
 

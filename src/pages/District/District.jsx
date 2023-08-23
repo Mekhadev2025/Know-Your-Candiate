@@ -21,8 +21,9 @@ const District = (props) => {
   const queryParams = new URLSearchParams(location.search);
   const selectedDistrict = queryParams.get('district');
   console.log(selectedDistrict);
- 
-  const dis=props.district;
+  const dist=selectedDistrict[0].toUpperCase()+selectedDistrict.substring(1)
+  console.log("dist=",dist)
+  // const dis=props.district;
 
   const totalCount = props.totalCount;
   const [data, setData] = useState([]);
@@ -42,9 +43,19 @@ const District = (props) => {
   // console.log(data)
   return (
     <section className="district--section">
-      <div className="dlink">{`Home > ${selectedDistrict}`}</div>
 
-      <h1 className="district--name">{selectedDistrict}</h1>
+      <div className="dlink">
+        
+      <Link className="link--home" to="/">Home</Link>
+      <span>&gt;</span>
+     <Link to="/district?district=wayanad" className="link--dis">{dist}</Link>
+        
+        </div>
+
+
+
+
+      <h1 className="district--name">{dist}</h1>
       <div className="cards">
         {data.map((item) => (
           <Card
