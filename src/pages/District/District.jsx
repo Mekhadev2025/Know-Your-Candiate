@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "../District/District.css";
 import photo from "../../assets/tharoor.png";
 import party from "../../assets/inc.svg";
@@ -15,16 +16,21 @@ const District = (props) => {
   //   console.log(props.history);
   // };
 
-  console.log(props)
-  const dis=props.location.this.state.district;
-  console.log("Dis ==",dis)
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const selectedDistrict = queryParams.get('district');
+  console.log(selectedDistrict);
+ 
+  const dis=props.district;
+
   const totalCount = props.totalCount;
   const [data, setData] = useState([]);
   const [buttonPopup,setPopup]=useState(false)
   useEffect(() => {
     async function fetchItem() {
       const response = await fetch(
-      `  http://localhost:5000/api/districts/district=${dis}`
+      `  http://localhost:5000/api/districts/district=${selectedDistrict}`
       );
       const newRes = await response.json();
       // console.log(newRes);
@@ -32,13 +38,13 @@ const District = (props) => {
     }
     fetchItem();
   }, []);
-
+  
   // console.log(data)
   return (
     <section className="district--section">
-      <div className="dlink">{`Home > ${props.district}`}</div>
+      <div className="dlink">{`Home > ${selectedDistrict}`}</div>
 
-      <h1 className="district--name">{props.district}</h1>
+      <h1 className="district--name">{selectedDistrict}</h1>
       <div className="cards">
         {data.map((item) => (
           <Card
