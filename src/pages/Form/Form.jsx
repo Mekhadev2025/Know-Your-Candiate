@@ -30,7 +30,7 @@ const Form = () => {
     <form  onSubmit={handleSubmit}>
       <label htmlFor="name-input">Name</label>
       <input
-      
+         required
         id="name-input"
         value={name}
         onChange={(e) => {
@@ -42,6 +42,7 @@ const Form = () => {
      
         id="party-input"
         value={party}
+        required
         onChange={(e) => {
           setParty(e.target.value);
         }}
@@ -49,7 +50,7 @@ const Form = () => {
 
       <label htmlFor="desc-input">Description</label>
       <textarea
-        
+        required
         id="desc-input"
         value={desc}
         onChange={(e) => {

@@ -10,14 +10,6 @@ const Home = () => {
       <section>
         <Map />
 
-
-        <Link to="/district?district=trivandrum" value="trivandrum">Trivandrum
-        </Link>
-
-        <Link to="/district?district=kollam" value="kollam">Kollam
-        </Link>
-
-
       </section>
       <section className="about">
         <h1 className="header">Choose your candidate</h1>
