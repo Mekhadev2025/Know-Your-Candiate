@@ -9,7 +9,6 @@ import Card from "../../components/Card/Card";
 import Popup from "../../components/Popup/Popup";
 import Form from "../Form/Form"
 import Login from "../Login/Login"
-import Loginform from "../../components/Loginform/Loginform"
 
 const District = (props) => {
 
@@ -58,7 +57,7 @@ const District = (props) => {
 
      function incrementPopper(){
              setPopper(3);
-             return 1;
+            //  return 1;
     }
 
     function incrementLogin(){
