@@ -10,3 +10,17 @@
     cursor:pointer;
     
 }
+
+@media screen and (max-width:1281px) 
+{
+    *{
+        padding:0;
+        margin:0;
+    }
+    .map--container{
+        margin:0;
+        margin-left:2rem;
+        margin-top:1rem;
+
+    }
+}

@@ -79,3 +79,13 @@ text-decoration:none;
     }
 
      
+
+    @media screen and (max-width:1280px)
+    {
+     .dlink,.district--name{
+        margin-left:10rem;
+     }
+     .nominee-btn{
+      margin-right:0rem;
+     }
+    }

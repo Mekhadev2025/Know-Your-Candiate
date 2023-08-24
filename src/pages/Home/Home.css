@@ -37,4 +37,10 @@ width:50%;
   height:35rem;
 }
 
- 
+ @media screen and (max-width:1280px)
+ {
+    *{
+        margin:0;
+        padding:0;
+    }
+ }

@@ -56,3 +56,10 @@
   line-height: 1rem;
   cursor:pointer;
 }
+
+ @media screen and (max-width:1280px)
+ {
+    .card--container {
+      margin:0rem 10rem;
+    }
+ }
