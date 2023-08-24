@@ -8,11 +8,13 @@
   font-style: normal;
   font-weight: 700;
   line-height: 120%;
+  margin-bottom:1rem;
 }
 
 .login--input{
 border-radius: 0.25rem;
 border: 1px solid #C7C4C2;
+margin-bottom:1rem;
 
 }
 .login--button{
