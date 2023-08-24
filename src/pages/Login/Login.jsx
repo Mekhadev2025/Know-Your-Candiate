@@ -26,7 +26,6 @@ const validateForm=()=>{
     setPhoneError("");
   }
 
-  // Other validation logic for OTP if needed
 
   return isValid;
 
