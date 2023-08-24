@@ -58,6 +58,7 @@ const District = (props) => {
 
      function incrementPopper(){
              setPopper(3);
+             return 1;
     }
 
     function incrementLogin(){

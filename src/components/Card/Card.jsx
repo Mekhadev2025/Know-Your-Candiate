@@ -12,12 +12,15 @@ const Card = (props) => {
   const [checked, setCheck] = React.useState(0);
   const incrementCount = () => {
     if (checked == 0) {
-      setCount(count + 1);
-      setCheck(1);
+     
        props.incrementLogin();
       props.incrementTotal();
-      props.incrementPopper();
-     
+      props.incrementPopper()==1?()=>{
+        setCount(count + 1);
+        setCheck(1);
+      }:""
+
+         console.log("incrementpopper",props.incrementPopper)
       console.log(props)
       // console.log(totalCount);
     } 
