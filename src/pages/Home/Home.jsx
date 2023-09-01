@@ -1,14 +1,31 @@
 import React from "react";
+import { useState } from "react";
 import {Link} from "react-router-dom"
 import "../Home/Home.css";
 import flag from "../../assets/flag.png";
 import ppl from "../../assets/ppl.png";
 import Map from "../../components/maps/Map";
 const Home = () => {
+
+
+  const [screenWidth, setScreenWidth] =   useState(window.innerWidth);
+
+  
+
+
+
   return (
     <main>
       <section>
-        <Map />
+      
+       {screenWidth>480?(<Map/>):(
+       <select className="selectConst">
+        <option>Select your constituency</option>
+        <option>Kannur</option>
+        <option>Kannur</option>
+       </select>)}
+
+        {/* <Map /> */}
 
       </section>
       <section className="about">

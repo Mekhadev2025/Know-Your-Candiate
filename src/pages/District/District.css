@@ -20,6 +20,7 @@
   font-weight: 700;
   line-height: 120%;
   margin: 3rem 0rem 2rem 15rem;
+  text-transform:capitalize;
 }
 
 .nominee-btn {
@@ -68,6 +69,7 @@ font-weight: 400;
 line-height: 1.5rem; 
 opacity:0.3;
 text-decoration:none;
+text-transform:capitalize;
 }
 
     .no-results{
