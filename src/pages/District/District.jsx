@@ -10,8 +10,15 @@ import Login from "../Login/Login";
 
 const District = (props) => {
   const [totalCount, setTotal] = useState(0);
-  const [popper, setPopper] = useState(false);
+  const [popper, setPopper] = useState(0);
+
   const [data, setData] = useState([]);
+
+  const [buttonPopup,setPopup]=useState(false)
+  const [loginPopup,setLogin]=useState(false)
+
+
+
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const location = useLocation();
 
@@ -44,9 +51,14 @@ const District = (props) => {
     setTotal(totalCount - 1);
   };
 
-  const togglePopup = () => {
-    setPopper(!popper);
+  const incrementPopper = () => {
+    setPopper(3);
   };
+
+  const incrementLogin = () => {
+    setLogin(true);
+  };
+
 
   return (
     <section className="district--section">
@@ -75,27 +87,66 @@ const District = (props) => {
               desc={item.desc}
               incrementTotal={incrementTotal}
               decrementTotal={decrementTotal}
-              incrementPopper={togglePopup}
+              incrementPopper={incrementPopper}
+              incrementLogin={incrementLogin}
             />
           ))
         )}
       </div>
 
       <div className="btn-wrapper">
-        <button className="nominee-btn" onClick={togglePopup}>
+        <button className="nominee-btn" onClick={()=>{
+          setPopup(true)
+          setPopper(1)
+        }}>
           Add Your Nominee
         </button>
       </div>
 
-      {popper && (
-        <Popup trigger={popper} setTrigger={togglePopup}>
+      {
+      popper===1 ?(
+        <Popup trigger={buttonPopup} setTrigger={setPopup}>
           <Form />
         </Popup>
-      )}
+      ):" "}
+  
+  {
+        popper===3?(
+       
+          <Popup trigger={loginPopup} setTrigger={setLogin}>
+                 <Login/>
+        </Popup>
+        ):" "
+      
+      }
 
-      {/* Your login popup logic can be implemented similarly */}
     </section>
   );
 };
 
 export default District;
+
+
+// <>
+// {
+//   popper===1?(
+//     <Popup trigger={buttonPopup} setTrigger={setPopup}>
+// <Form/>
+// </Popup>
+//   ):""}
+
+// {
+//   popper===3?(
+ 
+//     <Popup trigger={loginPopup} setTrigger={setLogin}>
+//            <Login/>
+//   </Popup>
+//   ):" "
+
+// }
+  
+// </>
+
+// </section>
+// );
+// };
