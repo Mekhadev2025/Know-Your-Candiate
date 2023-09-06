@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import "../Login/Login.css";
 import {authentication} from "../../../firebase-config"
+import FacebookLogin from 'react-facebook-login'
 import { signInWithPopup ,GoogleAuthProvider,FacebookAuthProvider} from 'firebase/auth'
 import GoogleButton from 'react-google-button'
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
     })
 }
 
-
+const [user, setUser] = useState(null)
 
 
 const signFacebook=()=>{
@@ -44,7 +45,13 @@ const signFacebook=()=>{
             
    <GoogleButton
   onClick={signGoogle}
+  
 />
+<FacebookLogin
+   
+   onClick={signFacebook}
+/>
+
 <button onClick={signFacebook}>Sign In with facebook</button>
          
           </div>
