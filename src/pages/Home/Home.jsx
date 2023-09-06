@@ -10,9 +10,6 @@ const Home = () => {
 
   const [screenWidth, setScreenWidth] =   useState(window.innerWidth);
 
-  
-
-
 
   return (
     <main>
@@ -29,7 +26,7 @@ const Home = () => {
 
       </section>
       <section className="about">
-        <h1 className="header">Choose your candidate</h1>
+        <h1 className="headerText">Choose your candidate</h1>
         <div className="container1">
           <p className="text text1">
             In a democratic republic like India, the power lies with the people,
