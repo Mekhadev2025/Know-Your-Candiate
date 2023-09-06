@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import "../Login/Login.css";
 import {authentication} from "../../../firebase-config"
 import FacebookLogin from 'react-facebook-login'
-import { signInWithPopup ,GoogleAuthProvider,FacebookAuthProvider} from 'firebase/auth'
+import { signInWithPopup ,GoogleAuthProvider,FacebookAuthProvider,TwitterAuthProvider} from 'firebase/auth'
 import GoogleButton from 'react-google-button'
 const Login = () => {
 
@@ -17,6 +17,19 @@ const Login = () => {
         console.log(err)
         alert("Sign In Not Successful")
     })
+}
+
+const signTwitter=()=>{
+  const provider=new TwitterAuthProvider();
+  signInWithPopup(authentication,provider)
+  .then((re)=>{
+      console.log(re)
+      // setWindow(false)
+  })
+  .catch((err)=>{
+      console.log(err)
+      alert("Sign In Not Successful")
+  })
 }
 
 const [user, setUser] = useState(null)
@@ -52,7 +65,7 @@ const signFacebook=()=>{
    onClick={signFacebook}
 />
 
-<button onClick={signFacebook}>Sign In with facebook</button>
+<button onClick={signTwitter}>Sign In with twitter</button>
          
           </div>
         ) : (
