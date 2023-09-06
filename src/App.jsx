@@ -6,7 +6,7 @@ import Footer from "./components/footer/Footer"
 import Login from "./pages/Login/Login"
 import District from './pages/District/District'
 import Demo from "./pages/Demo.jsx"
-import Admin from "./pages/Admin.jsx"
+import Demos from "./GoogleSignUp"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   // const ExternalIntegration = () => {
@@ -39,7 +39,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />}>    
         </Route>
-        <Route path="/demo" element={<Demo />}>    
+        <Route path="/demo" element={<Demos />}>    
         </Route>
         <Route path="/admin" element={<ExternalIntegration />} />
         

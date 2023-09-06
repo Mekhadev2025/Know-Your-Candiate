@@ -39,6 +39,7 @@ const District = (props) => {
         );
         const newRes = await response.json();
         const filteredData = newRes.filter((item) => item.district === district);
+        console.log("data==",filteredData)
         setData(filteredData);
       } catch (error) {
         console.error("Error fetching data:", error);

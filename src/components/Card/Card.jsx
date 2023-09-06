@@ -6,7 +6,7 @@ import "../Card/Card.css";
 // import Loginform from "../Loginform/Loginform"
 // import Login from "../Login/Login.jsx"
 const Card = (props) => {
-
+  console.log("card props",props)
   const [count, setCount] = React.useState(0);
   // if(count==)
   const [checked, setCheck] = React.useState(0);
