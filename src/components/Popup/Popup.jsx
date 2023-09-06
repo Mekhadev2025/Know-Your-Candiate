@@ -6,7 +6,10 @@ function Popup(props) {
     <div className="popup">
         <div className="popup-inner">
             <img className="close-btn" src={closeimg} onClick={()=>{
-                props.setTrigger(false)
+             
+                props.refresh()
+                console.log(props.refresh())
+                   props.setTrigger(false)
             }} >
             </img>
             

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link ,useNavigate} from "react-router-dom";
 import "../District/District.css";
 import photo from "../../assets/pic.jpg";
 import party from "../../assets/inc.svg";
@@ -11,17 +11,22 @@ import Login from "../Login/Login";
 const District = (props) => {
   const [totalCount, setTotal] = useState(0);
   const [popper, setPopper] = useState(0);
-
+  const [refresh,setRefresh]=useState(true)
   const [data, setData] = useState([]);
 
   const [buttonPopup,setPopup]=useState(false)
   const [loginPopup,setLogin]=useState(false)
 
 
-
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const location = useLocation();
+    const navigate =useNavigate()
 
+   const refreshClick=()=>{
+    setRefresh(true)
+    window.location.reload();
+  
+   } 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const district = queryParams.get("district");
@@ -105,7 +110,7 @@ const District = (props) => {
 
       {
       popper===1 ?(
-        <Popup trigger={buttonPopup} setTrigger={setPopup}>
+        <Popup trigger={buttonPopup} setTrigger={setPopup}  refresh={refreshClick}>
           <Form />
         </Popup>
       ):" "}
@@ -113,7 +118,7 @@ const District = (props) => {
   {
         popper===3?(
        
-          <Popup trigger={loginPopup} setTrigger={setLogin}>
+          <Popup trigger={loginPopup} setTrigger={setLogin} refresh={refreshClick}>
                  <Login/>
         </Popup>
         ):" "
