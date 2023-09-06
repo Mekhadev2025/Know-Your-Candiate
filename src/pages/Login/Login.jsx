@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import "../Login/Login.css";
 import {authentication} from "../../../firebase-config"
-import FacebookLogin from 'react-facebook-login'
+
 import { signInWithPopup ,GoogleAuthProvider,FacebookAuthProvider,TwitterAuthProvider} from 'firebase/auth'
 import GoogleButton from 'react-google-button'
 const Login = () => {
@@ -60,11 +60,9 @@ const signFacebook=()=>{
   onClick={signGoogle}
   
 />
-<FacebookLogin
-   
-   onClick={signFacebook}
-/>
+ 
 
+<button onClick={signFacebook}>Sign In with twitter</button>
 <button onClick={signTwitter}>Sign In with twitter</button>
          
           </div>
