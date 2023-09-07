@@ -111,10 +111,9 @@ font-size:2rem;
       width:100%;
       left:0;
       right:0;
+      z-index: 9999; 
      }
-     .btn-wrapper{
     
-     }
      .cards{
       margin-bottom:2rem;
      }

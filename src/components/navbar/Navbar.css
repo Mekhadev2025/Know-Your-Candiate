@@ -61,4 +61,7 @@ text-transform: uppercase;
     .header2{
         font-size: 1rem;
     }
+   .social a{
+        z-index:2;
+    }
 }
