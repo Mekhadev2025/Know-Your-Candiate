@@ -31,6 +31,7 @@ const Form = () => {
       desc: desc,
       method: "add", // Assuming you want the method to always be 'add'
       district: selectedDistrict,
+      voteCount:"0"
     };
 
     axios
