@@ -48,7 +48,7 @@ const Home = () => {
         <option>Kollam </option>
         <option>Attingal </option>
         <option>Trivandrum</option>
-        <option></option>
+       
        </select>)}
       </section>
       <section className="about">
