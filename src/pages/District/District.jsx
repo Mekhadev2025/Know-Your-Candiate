@@ -67,14 +67,35 @@ const District = (props) => {
     setLogin(true);
   };
 
-  const handleSelected = (item) => {
-    // Your handleSelected logic here
-  };
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const voteInc = () => {
-    // Your vote increment logic here
-  };
+  const handleSelected=(item)=>
+  {   
 
+    console.log(item)
+    setSelectedItem(item);
+    console.log("selshoo",selectedItem)
+     console.log("Hurray",item)
+    
+  }
+  const voteInc=()=>{
+      console.log("hepp",selectedItem)
+
+      const apiUrl = `https://syndigo.matsio.com/gilabs/api/?method=voteUpdate&id=${selectedItem.id}&voteCount=${++selectedItem.voteCount}`;
+      axios
+      .post(apiUrl)
+      .then((response) => {
+ 
+        console.log('API response:', response.data);
+
+        setVoteCount(voteCount + 1);
+      })
+      .catch((error) => {
+        console.error('API error:', error);
+      });
+  };
+  
+  const sortedData = [...data].sort((a, b) => b.voteCount - a.voteCount);
   return (
     <section className="district--section">
       <div className="dlink">
@@ -95,7 +116,7 @@ const District = (props) => {
         {data.length === 0 ? (
           <h2 className="no-results">Nothing to display</h2>
         ) : (
-          data.map((item) => (
+          sortedData.map((item) => (
             <Card
               key={item.id}
               photo={photo}
