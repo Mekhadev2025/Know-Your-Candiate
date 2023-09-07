@@ -7,7 +7,7 @@ import Card from "../../components/Card/Card";
 import Popup from "../../components/Popup/Popup";
 import Form from "../Form/Form";
 import Login from "../Login/Login";
-
+import axios from "axios"
 const District = (props) => {
   const [totalCount, setTotal] = useState(0);
   const [popper, setPopper] = useState(0);
@@ -67,7 +67,34 @@ const District = (props) => {
     setLogin(true);
   };
 
+   
+  const [selectedItem, setSelectedItem] = useState(null);
 
+  const handleSelected=(item)=>
+  {   
+
+    console.log(item)
+    setSelectedItem(item);
+    console.log("selshoo",selectedItem)
+     console.log("Hurray",item)
+    
+  }
+  const voteInc=()=>{
+      console.log("hepp",selectedItem)
+
+      const apiUrl = `https://syndigo.matsio.com/gilabs/api/?method=voteUpdate&id=${selectedItem.id}&voteCount=${++selectedItem.voteCount}`;
+      axios
+      .post(apiUrl)
+      .then((response) => {
+ 
+        console.log('API response:', response.data);
+
+        setVoteCount(voteCount + 1);
+      })
+      .catch((error) => {
+        console.error('API error:', error);
+      });
+  };
   
 
   return (
@@ -99,6 +126,8 @@ const District = (props) => {
               decrementTotal={decrementTotal}
               incrementPopper={incrementPopper}
               incrementLogin={incrementLogin}
+              item={item}
+              handleSelected={handleSelected}
             />
           ))
         )}
@@ -124,7 +153,7 @@ const District = (props) => {
         popper===3?(
        
           <Popup trigger={loginPopup} setTrigger={setLogin} refresh={refreshClick}>
-                 <Login />
+                 <Login voteInc={voteInc}/>
         </Popup>
         ):" "
       

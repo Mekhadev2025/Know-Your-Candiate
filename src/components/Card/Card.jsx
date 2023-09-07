@@ -1,20 +1,24 @@
 
 //from distict.jsx
-
 import React, { useEffect, useState } from "react";
 import "../Card/Card.css";
 // import Loginform from "../Loginform/Loginform"
 // import Login from "../Login/Login.jsx"
 const Card = (props) => {
-  console.log("card props",props)
+
   const [count, setCount] = React.useState(0);
-    
-  useEffect(()=>{
+ 
+  useEffect(()=>{ 
+ 
     setCount(props.voteCount)
   })
- 
+   const [selected,setSelected]=useState({
+   })
 
   const incrementCount=()=>{
+    setSelected(props.item)
+     console.log("Selected=",props.item)
+     props.handleSelected(props.item)
     props.incrementPopper();
     props.incrementLogin();
   }

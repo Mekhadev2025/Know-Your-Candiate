@@ -5,14 +5,14 @@ import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthP
  
 import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton } from "react-social-login-buttons";
 
-const Login = () => {
+const Login = (props) => {
   const signGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(authentication, provider)
       .then((re) => {
         console.log(re);
         setShowWindow(false);
-      
+        props.voteInc();
 
       })
       .catch((err) => {
@@ -28,6 +28,7 @@ const Login = () => {
       .then((re) => {
         console.log(re);
         setShowWindow(false);
+        props.voteInc();
       })
       .catch((err) => {
         console.error(err);
@@ -42,6 +43,7 @@ const Login = () => {
       .then((re) => {
         console.log(re);
         setShowWindow(false);
+        props.voteInc();
       })
       .catch((err) => {
         console.error(err);
