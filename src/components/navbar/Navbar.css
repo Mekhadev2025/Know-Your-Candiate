@@ -47,3 +47,18 @@ text-transform: uppercase;
 }
 
 
+@media screen and (max-width:480px)
+{
+
+    .header{
+        margin-left:0;
+        margin:1rem;
+    }
+    .header1{
+        font-size: 0.8rem;
+        margin:0;
+    }
+    .header2{
+        font-size: 1rem;
+    }
+}

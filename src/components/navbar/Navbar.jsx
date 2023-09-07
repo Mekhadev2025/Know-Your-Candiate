@@ -16,13 +16,7 @@ const Navbar = () => {
      
       </div>
 
-      <button className='nav-btn' onClick={()=>{
-                    //  alert("Click any district")
-                      setPopup(true)
-                    }}>
-        Add your Nomination
- 
-      </button>
+     
 
       <Popup trigger={buttonPopup} setTrigger={setPopup} >
         

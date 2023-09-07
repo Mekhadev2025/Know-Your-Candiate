@@ -5,25 +5,51 @@ import "../Home/Home.css";
 import flag from "../../assets/flag.png";
 import ppl from "../../assets/ppl.png";
 import Map from "../../components/maps/Map";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
 
 
   const [screenWidth, setScreenWidth] =   useState(window.innerWidth);
-
+  const [selectedConstituency, setSelectedConstituency] = useState("");
+  const navigate=useNavigate()
+  const handleConstituencyChange = (event) => {
+  
+    const selectedValue = event.target.value;
+    setSelectedConstituency(selectedValue);
+    console.log("Selected Constituency:", selectedValue);
+    const lowercaseValue = selectedValue.toLowerCase();
+    navigate(`/district?district=${lowercaseValue}`)
+  };
 
   return (
     <main>
       <section>
       
        {screenWidth>480?(<Map/>):(
-       <select className="selectConst">
+       <select className="selectConst" onChange={handleConstituencyChange}>
         <option>Select your constituency</option>
-        <option>Kannur</option>
-        <option>Kannur</option>
+        <option>Kasaragod </option>
+        <option>Kannur</option>   
+        <option>Vadakara </option>
+        <option>Kozhikode </option>
+        <option>Wayanad </option>
+        <option>Malappuram </option>
+        <option>Ponnani </option>
+        <option>Palakkad </option>
+        <option>Alathur </option>
+        <option>Thrissur </option>
+        <option>Chalakudy </option>
+        <option>Ernakulam </option>
+        <option>Idukki </option>
+        <option>Alappuzha </option>
+        <option>Kottayam </option>
+        <option>Mavelikkara </option>
+        <option>Pathanamthitta </option>
+        <option>Kollam </option>
+        <option>Attingal </option>
+        <option>Trivandrum</option>
+        <option></option>
        </select>)}
-
-        {/* <Map /> */}
-
       </section>
       <section className="about">
         <h1 className="headerText">Choose your candidate</h1>
