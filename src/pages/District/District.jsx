@@ -137,6 +137,7 @@ const District = (props) => {
       </div>
 
       <div className="btn-wrapper">
+        
         <button
           className="nominee-btn"
           onClick={() => {

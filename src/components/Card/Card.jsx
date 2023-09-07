@@ -40,9 +40,11 @@ const Card = (props) => {
       <div className={`candidate--count ${props.isMaxVote ? "max-vote" : ""}`}>
         {count}
       </div>
-      <button onClick={incrementCount} className="card--btn">
+       
+        <button onClick={incrementCount} className="card--btn">
         Vote
-      </button>
+      </button> 
+      
     </div>
   );
 };
