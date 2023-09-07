@@ -49,6 +49,8 @@ const District = (props) => {
     fetchData();
   }, [location.search]);
 
+
+    
   const incrementTotal = () => {
     setTotal(totalCount + 1);
   };
@@ -65,6 +67,8 @@ const District = (props) => {
     setLogin(true);
   };
 
+
+  
 
   return (
     <section className="district--section">
