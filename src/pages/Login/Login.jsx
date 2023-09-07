@@ -3,6 +3,8 @@ import "../Login/Login.css";
 import { authentication } from "../../../firebase-config";
 import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from 'firebase/auth';
 import GoogleButton from 'react-google-button';
+import TwitterButton from "react-twitter-button";
+import { FacebookLoginButton,GoogleLoginButton,TwitterLoginButton } from "react-social-login-buttons";
 
 const Login = () => {
   const signGoogle = () => {
@@ -50,9 +52,13 @@ const Login = () => {
       {window === true ? (
         <div>
           <h1 className="login--header">Login</h1>
-          <GoogleButton onClick={signGoogle} />
-          <button onClick={signFacebook}>Sign In with Facebook</button>
-          <button onClick={signTwitter}>Sign In with Twitter</button>
+          {/* <TwitterButton/> */}
+          <FacebookLoginButton onClick={signFacebook} />
+          <TwitterLoginButton onClick={signTwitter} />
+          <GoogleLoginButton onClick={signGoogle} />
+          {/* <GoogleButton onClick={signGoogle} /> */}
+          {/* <button onClick={signFacebook}>Sign In with Facebook</button>
+          <button onClick={signTwitter}>Sign In with Twitter</button> */}
         </div>
       ) : (
         <h1 className="thanks--vote">Thanks For Voting</h1>
