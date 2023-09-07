@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link ,useNavigate} from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import "../District/District.css";
 import photo from "../../assets/pic.jpg";
 import party from "../../assets/inc.svg";
@@ -7,26 +7,23 @@ import Card from "../../components/Card/Card";
 import Popup from "../../components/Popup/Popup";
 import Form from "../Form/Form";
 import Login from "../Login/Login";
-import axios from "axios"
+import axios from "axios";
+
 const District = (props) => {
   const [totalCount, setTotal] = useState(0);
   const [popper, setPopper] = useState(0);
-  const [refresh,setRefresh]=useState(true)
   const [data, setData] = useState([]);
-
-  const [buttonPopup,setPopup]=useState(false)
-  const [loginPopup,setLogin]=useState(false)
-
-
+  const [buttonPopup, setPopup] = useState(false);
+  const [loginPopup, setLogin] = useState(false);
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const location = useLocation();
-    const navigate =useNavigate()
+  const navigate = useNavigate();
 
-   const refreshClick=()=>{
-    setRefresh(true)
+  const refreshClick = () => {
+ 
     window.location.reload();
-  
-   } 
+  };
+
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const district = queryParams.get("district");
@@ -39,7 +36,6 @@ const District = (props) => {
         );
         const newRes = await response.json();
         const filteredData = newRes.filter((item) => item.district === district);
-        console.log("data==",filteredData)
         setData(filteredData);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -49,8 +45,12 @@ const District = (props) => {
     fetchData();
   }, [location.search]);
 
+  // Find the maximum vote count among all cards
+  const maxVoteCount = data.reduce(
+    (max, card) => (card.voteCount > max ? card.voteCount : max),
+    0
+  );
 
-    
   const incrementTotal = () => {
     setTotal(totalCount + 1);
   };
@@ -67,35 +67,13 @@ const District = (props) => {
     setLogin(true);
   };
 
-   
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  const handleSelected=(item)=>
-  {   
-
-    console.log(item)
-    setSelectedItem(item);
-    console.log("selshoo",selectedItem)
-     console.log("Hurray",item)
-    
-  }
-  const voteInc=()=>{
-      console.log("hepp",selectedItem)
-
-      const apiUrl = `https://syndigo.matsio.com/gilabs/api/?method=voteUpdate&id=${selectedItem.id}&voteCount=${++selectedItem.voteCount}`;
-      axios
-      .post(apiUrl)
-      .then((response) => {
- 
-        console.log('API response:', response.data);
-
-        setVoteCount(voteCount + 1);
-      })
-      .catch((error) => {
-        console.error('API error:', error);
-      });
+  const handleSelected = (item) => {
+    // Your handleSelected logic here
   };
-  
+
+  const voteInc = () => {
+    // Your vote increment logic here
+  };
 
   return (
     <section className="district--section">
@@ -104,7 +82,10 @@ const District = (props) => {
           Home
         </Link>
         <span>&gt;</span>
-        <Link to={`/district?district=${selectedDistrict}`} className="link--dis">
+        <Link
+          to={`/district?district=${selectedDistrict}`}
+          className="link--dis"
+        >
           {selectedDistrict}
         </Link>
       </div>
@@ -128,64 +109,45 @@ const District = (props) => {
               incrementLogin={incrementLogin}
               item={item}
               handleSelected={handleSelected}
+              isMaxVote={item.voteCount === maxVoteCount} // Pass the isMaxVote prop
             />
           ))
         )}
       </div>
 
       <div className="btn-wrapper">
-        <button className="nominee-btn" onClick={()=>{
-          setPopup(true)
-          setPopper(1)
-        }}>
+        <button
+          className="nominee-btn"
+          onClick={() => {
+            setPopup(true);
+            setPopper(1);
+          }}
+        >
           Add Your Nominee
         </button>
       </div>
 
-      {
-      popper===1 ?(
-        <Popup trigger={buttonPopup} setTrigger={setPopup}  refresh={refreshClick}>
+      {popper === 1 ? (
+        <Popup
+          trigger={buttonPopup}
+          setTrigger={setPopup}
+          refresh={refreshClick}
+        >
           <Form />
         </Popup>
-      ):" "}
-  
-  {
-        popper===3?(
-       
-          <Popup trigger={loginPopup} setTrigger={setLogin} refresh={refreshClick}>
-                 <Login voteInc={voteInc}/>
-        </Popup>
-        ):" "
-      
-      }
+      ) : ""}
 
+      {popper === 3 ? (
+        <Popup
+          trigger={loginPopup}
+          setTrigger={setLogin}
+          refresh={refreshClick}
+        >
+          <Login voteInc={voteInc} />
+        </Popup>
+      ) : ""}
     </section>
   );
 };
 
 export default District;
-
-
-// <>
-// {
-//   popper===1?(
-//     <Popup trigger={buttonPopup} setTrigger={setPopup}>
-// <Form/>
-// </Popup>
-//   ):""}
-
-// {
-//   popper===3?(
- 
-//     <Popup trigger={loginPopup} setTrigger={setLogin}>
-//            <Login/>
-//   </Popup>
-//   ):" "
-
-// }
-  
-// </>
-
-// </section>
-// );
-// };

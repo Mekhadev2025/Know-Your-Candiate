@@ -9,7 +9,7 @@ function Popup(props) {
              
                 props.refresh()
                 console.log(props.refresh())
-                   props.setTrigger(false)
+                props.setTrigger(false)
             }} >
             </img>
             
