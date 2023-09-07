@@ -1,38 +1,24 @@
 
 //from distict.jsx
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Card/Card.css";
 // import Loginform from "../Loginform/Loginform"
 // import Login from "../Login/Login.jsx"
 const Card = (props) => {
   console.log("card props",props)
   const [count, setCount] = React.useState(0);
-  // if(count==)
-  const [checked, setCheck] = React.useState(0);
-  const incrementCount = () => {
-    if (checked == 0) {
-     
-       props.incrementLogin();
-      props.incrementTotal();
-      props.incrementPopper()==1?()=>{
-        setCount(count + 1);
-        setCheck(1);
-      }:""
-
-         console.log("incrementpopper",props.incrementPopper)
-      console.log(props)
-      // console.log(totalCount);
-    } 
-    else {
-      setCount(count - 1);
-      setCheck(0);
-      props.decrementTotal();
-      // console.log(totalCount);
-    }
     
-    //  togglePop();
-  };
+  useEffect(()=>{
+    setCount(props.voteCount)
+  })
+ 
+
+  const incrementCount=()=>{
+    props.incrementPopper();
+    props.incrementLogin();
+  }
+
   return (
     <div className="card--container">
       <img src={props.photo} className="candidate--img"></img>
