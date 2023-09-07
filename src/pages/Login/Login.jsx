@@ -43,6 +43,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.error(err);
+        alert("Sign In Not succesful")
         // Show an error message to the user
         // You can update the state to display the error message within the component.
       });
