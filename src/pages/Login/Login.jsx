@@ -23,7 +23,7 @@ const Login = () => {
     signInWithPopup(authentication, provider)
       .then((re) => {
         console.log(re);
-        // setWindow(false);
+        setWindow(false);
       })
       .catch((err) => {
         console.log(err);
