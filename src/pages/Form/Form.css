@@ -49,3 +49,9 @@ border-radius: 4rem;
 background: #0B0C0C;
 cursor:pointer;
 }
+@media screen and (max-width:480px){
+    .form-submit{
+        width:100%;
+    }
+    
+}

@@ -41,3 +41,15 @@ font-weight: 700;
 line-height: 3rem;
 
 }
+
+@media screen and (max-width:480px)
+{
+   
+
+.popup-inner .close-btn {
+    position: absolute;
+    top: -2rem;
+    left: 10rem;
+    cursor: pointer;
+}
+}

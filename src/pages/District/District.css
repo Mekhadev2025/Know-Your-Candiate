@@ -102,27 +102,17 @@ text-transform:capitalize;
 
      .nominee-btn{
       margin:0;
+      margin:auto;
       position:fixed;
-      bottom:0.3rem;
-      margin:0 auto;
+      bottom:0.5rem;
+      width:100%;
       
-       
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin-left:3rem;
-      margin-right:1rem;
+      
+  
+   
      
      }
-      .btn-wrapper{
-         position:fixed;
-         bottom:0;
-         
-         height:4rem;
-         width:100%;
-         margin:0;
-         display:block;
-         
-
-      }
+     .btn-wrapper{
+      width:80%;
+     }
     }
