@@ -1,13 +1,16 @@
 import React,{useState} from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../maps/Map.css"
 const Map = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("Kasaragod");
  
-  
+  const navigate=useNavigate();
   const handleDistrictClick = (districtName) => {
     setSelectedDistrict(districtName);
-    setUnderlineText(true);
+    const lowercased=districtName.toLowerCase()
+    navigate(`/district?district=${lowercased}`)
+    
   };
 
   const districtColors = {
@@ -373,7 +376,7 @@ const Map = () => {
             <path
               id="Thiruvananthapuram"
               cursor="pointer"
-              onClick={() => handleDistrictClick('Thiruvananthapuram')}
+              onClick={() => handleDistrictClick('Trivandrum')}
               d="M287.597 580.023L302.057 578.199C302.31 578.168 302.542 578.042 302.708 577.845C302.874 577.648 302.962 577.396 302.954 577.136L302.623 567.395C302.61 567.031 302.763 566.761 303.081 566.586L318.624 558.171C318.858 558.041 319.063 558.08 319.238 558.288C320.942 560.4 321.783 561.935 321.764 562.89C321.676 566.498 321.9 571.159 320.525 572.934C313.719 581.755 306.91 590.661 300.097 599.651C300.037 599.732 299.96 599.8 299.871 599.85C299.783 599.9 299.685 599.931 299.585 599.941C299.484 599.951 299.382 599.94 299.285 599.908C299.189 599.877 299.1 599.826 299.025 599.758C293.574 595.029 288.104 590.71 283.394 585.122C278.603 579.428 273.809 573.74 269.011 568.058C268.725 567.72 268.745 567.398 269.07 567.093L275.164 561.359C275.392 561.145 275.648 561.106 275.934 561.242L287.324 566.761C287.623 566.904 287.759 567.142 287.733 567.473L286.739 579.194C286.729 579.308 286.745 579.422 286.785 579.529C286.825 579.636 286.889 579.732 286.971 579.812C287.053 579.891 287.152 579.951 287.26 579.987C287.368 580.024 287.483 580.036 287.597 580.023Z"
               fill={
                 selectedDistrict === "Thiruvananthapuram"
@@ -834,7 +837,7 @@ const Map = () => {
               <tspan x="937.188" y="18.2" 
               fill={selectedDistrict=="Kasaragod"?"blue":"#006EB5"}
                >
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
             <text
@@ -889,7 +892,7 @@ const Map = () => {
             >
               <tspan className="districts" x="910.266" y="83.2"     textDecoration={selectedDistrict=="Kannur"?"underline":"none"}
                fill={selectedDistrict=="Kannur"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -922,7 +925,7 @@ const Map = () => {
             >
               <tspan x="922.219" y="140.2" textDecoration={selectedDistrict=="Vadakara"?"underline":"none"}
                fill={selectedDistrict=="Vadakara"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -955,7 +958,7 @@ const Map = () => {
             >
               <tspan x="930.547" y="178.2" textDecoration={selectedDistrict=="Kozhikode"?"underline":"none"}
                fill={selectedDistrict=="Kozhikode"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -987,7 +990,7 @@ const Map = () => {
             >
               <tspan x="923.219" y="205.2" textDecoration={selectedDistrict=="Wayanad"?"underline":"none"}
                fill={selectedDistrict=="Wayanad"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1019,7 +1022,7 @@ const Map = () => {
             >
               <tspan x="950.375" y="231.2" textDecoration={selectedDistrict=="Malappuram"?"underline":"none"}
                fill={selectedDistrict=="Malappuram"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1051,7 +1054,7 @@ const Map = () => {
             >
               <tspan x="920.188" y="257.2" textDecoration={selectedDistrict=="Ponnani"?"underline":"none"}
                fill={selectedDistrict=="Ponnani"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1083,7 +1086,7 @@ const Map = () => {
             >
               <tspan x="927.281" y="277.2" textDecoration={selectedDistrict=="Palakkad"?"underline":"none"}
                fill={selectedDistrict=="Palakkad"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1115,7 +1118,7 @@ const Map = () => {
             >
               <tspan x="910.125" y="301.2" textDecoration={selectedDistrict=="Alathur"?"underline":"none"}
                fill={selectedDistrict=="Alathur"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1132,7 +1135,7 @@ const Map = () => {
               <Link to="/district?district=thrissur" value="thrissur">
                 <tspan className="districts" x="839" y="325.2" textDecoration={selectedDistrict=="Thrissur"?"underline":"none"}
                fill={selectedDistrict=="Thrissur"?"blue":"black"}>
-                  10.Thrissur{" "}
+                  {/* 10.Thrissur{" "} */}
                 </tspan>
               </Link>
             </text>
@@ -1147,7 +1150,7 @@ const Map = () => {
             >
               <tspan x="927.578" y="325.2" textDecoration={selectedDistrict=="Thrissur"?"underline":"none"}
                fill={selectedDistrict=="Thrissur"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1179,7 +1182,7 @@ const Map = () => {
             >
               <tspan x="938.922" y="351.2" textDecoration={selectedDistrict=="Chalakudy"?"underline":"none"}
                fill={selectedDistrict=="Chalakudy"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1211,7 +1214,7 @@ const Map = () => {
             >
               <tspan x="949.078" y="372.2" textDecoration={selectedDistrict=="Ernakulam"?"underline":"none"}
                fill={selectedDistrict=="Ernakulam"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1243,7 +1246,7 @@ const Map = () => {
             >
               <tspan x="909.562" y="393.2"textDecoration={selectedDistrict=="Idukki"?"underline":"none"}
                fill={selectedDistrict=="Idukki"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1275,7 +1278,7 @@ const Map = () => {
             >
               <tspan x="947.359" y="413.2" textDecoration={selectedDistrict=="Alappuzha"?"underline":"none"}
                fill={selectedDistrict=="Alappuzha"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1307,7 +1310,7 @@ const Map = () => {
             >
               <tspan x="938.219" y="437.2" textDecoration={selectedDistrict=="Kottayam"?"underline":"none"}
                fill={selectedDistrict=="Kottayam"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1339,7 +1342,7 @@ const Map = () => {
             >
               <tspan x="956.938" y="458.2" textDecoration={selectedDistrict=="Mavelikkara"?"underline":"none"}
                fill={selectedDistrict=="Mavelikkara"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1374,7 +1377,7 @@ const Map = () => {
             >
               <tspan x="980.562" y="482.2" textDecoration={selectedDistrict=="Pathanamthitta"?"underline":"none"}
                fill={selectedDistrict=="Pathanamthitta"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1406,7 +1409,7 @@ const Map = () => {
             >
               <tspan x="920.469" y="524.2" textDecoration={selectedDistrict=="Kollam"?"underline":"none"}
                fill={selectedDistrict=="Kollam"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1438,7 +1441,7 @@ const Map = () => {
             >
               <tspan className="districts" x="923.484" y="555.2" textDecoration={selectedDistrict=="Attingal"?"underline":"none"}
                fill={selectedDistrict=="Attingal"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
@@ -1476,7 +1479,7 @@ const Map = () => {
             >
               <tspan x="1013.11" y="590.2" textDecoration={selectedDistrict=="Thiruvananthapuram"?"underline":"none"}
                fill={selectedDistrict=="Thiruvananthapuram"?"blue":"#006EB5"}>
-                (Leading K Muraleedharan)
+                {/* (Leading K Muraleedharan) */}
               </tspan>
             </text>
           </g>
