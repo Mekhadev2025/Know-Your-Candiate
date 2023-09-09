@@ -1,24 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Login/Login.css";
 import { authentication } from "../../../firebase-config";
 import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from 'firebase/auth';
- 
 import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton } from "react-social-login-buttons";
 
 const Login = (props) => {
+  const [value, setValue] = useState("");
+  const [showWindow, setShowWindow] = useState(true);
+
   const signGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(authentication, provider)
       .then((re) => {
+       
         console.log(re);
         setShowWindow(false);
+         setValue(re.user.email);
+        localStorage.setItem("email", re.user.email);
         props.voteInc();
-
       })
       .catch((err) => {
         console.error(err);
-        // Show an error message to the user
-        // You can update the state to display the error message within the component.
       });
   };
 
@@ -32,8 +34,6 @@ const Login = (props) => {
       })
       .catch((err) => {
         console.error(err);
-        // Show an error message to the user
-        // You can update the state to display the error message within the component.
       });
   };
 
@@ -47,25 +47,31 @@ const Login = (props) => {
       })
       .catch((err) => {
         console.error(err);
-        alert("Sign In Not succesful")
-        // Show an error message to the user
-        // You can update the state to display the error message within the component.
+        alert("Sign In Not successful");
       });
   };
 
-  const [showWindow, setShowWindow] = useState(true);
+  useEffect(() => {
+    setValue(localStorage.getItem("email"));
+  }, []);
 
   return (
     <>
-      {showWindow === true ? (
-        <div>
-          <h1 className="login--header">Login</h1>
-          <FacebookLoginButton onClick={signFacebook} />
-          <TwitterLoginButton onClick={signTwitter} />
-          <GoogleLoginButton onClick={signGoogle} />
-        </div>
+      {value ? (
+        <div>Already Logged In</div>
       ) : (
-        <h1 className="thanks--vote">Thanks For Voting</h1>
+        <div>
+          {showWindow === true ? (
+            <div>
+              <h1 className="login--header">Login</h1>
+              <FacebookLoginButton onClick={signFacebook} />
+              <TwitterLoginButton onClick={signTwitter} />
+              <GoogleLoginButton onClick={signGoogle} />
+            </div>
+          ) : (
+            <h1 className="thanks--vote">Thanks For Voting</h1>
+          )}
+        </div>
       )}
     </>
   );

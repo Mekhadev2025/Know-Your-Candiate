@@ -869,7 +869,7 @@ const Map = () => {
               fontWeight="500"
               letterSpacing="0em"
             >
-              <Link to="/district?district=kasargod" value="kasargod">
+              <Link to="/district?district=kasaragod" value="kasaragod">
                 <tspan
                   className="districts"
                   x="839"
