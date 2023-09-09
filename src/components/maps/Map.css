@@ -11,6 +11,9 @@
     
 }
 
+.dists:hover{
+    fill:#0095F5;
+}
 @media screen and (max-width:1281px) 
 {
     *{

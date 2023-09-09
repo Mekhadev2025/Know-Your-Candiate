@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../maps/Map.css"
 const Map = () => {
-  const [selectedDistrict, setSelectedDistrict] = useState("Kasaragod");
+  const [selectedDistrict, setSelectedDistrict] = useState();
  
   const navigate=useNavigate();
   const handleDistrictClick = (districtName) => {
@@ -167,6 +167,7 @@ const Map = () => {
               
             />
             <path
+              className="dists"
               id="Kasaragod"
               cursor="pointer"
               onClick={() => handleDistrictClick('Kasaragod')}
@@ -179,6 +180,7 @@ const Map = () => {
                
             />
             <path
+             className="dists"
               id="Kannur"
               cursor="pointer"
               onClick={() => handleDistrictClick('Kannur')}
@@ -190,6 +192,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Wayanad"
               cursor="pointer"
               onClick={() => handleDistrictClick('Wayanad')}
@@ -201,6 +204,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Vadakara"
               cursor="pointer"
               onClick={() => handleDistrictClick('Vadakara')}
@@ -212,6 +216,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Kozhikode"
               onClick={() => handleDistrictClick('Kozhikode')}
               d="M144.112 177.328L152.614 184.554C152.874 184.775 152.92 185.038 152.751 185.344L146.237 197.064C146.075 197.363 146.071 197.662 146.227 197.961L149.094 203.373C149.263 203.692 149.182 203.922 148.851 204.065L137.188 209.175C136.928 209.285 136.73 209.471 136.594 209.731L130.636 221.169C130.382 221.656 130.158 221.646 129.963 221.139C126.758 212.786 123.566 204.465 120.388 196.177C118.077 190.17 118.72 181.882 118.515 175.466C118.502 175.128 118.613 174.835 118.847 174.588C123.888 169.264 125.312 166.524 133.503 166.671C133.867 166.677 134.192 166.57 134.478 166.349L137.042 164.34C137.335 164.113 137.533 163.817 137.637 163.453L138.788 159.377C138.835 159.216 138.925 159.071 139.048 158.957C139.171 158.842 139.322 158.764 139.485 158.729C139.648 158.694 139.817 158.704 139.974 158.758C140.132 158.812 140.271 158.908 140.377 159.036L149.007 169.313C149.215 169.567 149.218 169.82 149.016 170.074L144.034 176.538C143.806 176.831 143.832 177.094 144.112 177.328Z"
@@ -222,6 +227,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Malappuram"
               cursor="pointer"
               onClick={() => handleDistrictClick('Malappuram')}
@@ -233,6 +239,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Palakkad"
               cursor="pointer"
               onClick={() => handleDistrictClick('Palakkad')}
@@ -244,6 +251,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Ponnani"
               cursor="pointer"
               onClick={() => handleDistrictClick('Ponnani')}
@@ -255,6 +263,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Alathur"
               cursor="pointer"
               onClick={() => handleDistrictClick('Alathur')}
@@ -266,6 +275,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Thrissur"
               cursor="pointer"
               onClick={() => handleDistrictClick('Thrissur')}
@@ -277,6 +287,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Chalakudy"
               onClick={() => handleDistrictClick('Chalakudy')}
               d="M195.45 332.866L192.544 327.21C192.356 326.852 192.463 326.648 192.866 326.596C200.322 325.686 207.714 324.737 215.04 323.748C220.393 323.027 225.737 319.38 230.193 316.533C230.466 316.357 230.703 316.399 230.905 316.659L235.205 322.432C235.432 322.731 235.728 322.916 236.092 322.988L263.999 328.526C264.454 328.617 264.822 328.848 265.101 329.219L271.274 337.214C271.722 337.793 271.621 337.917 270.971 337.585L265.667 334.874C265.329 334.699 264.968 334.634 264.584 334.679L244.926 336.912C244.601 336.951 244.377 337.12 244.254 337.419C242.544 341.508 240.834 345.591 239.125 349.666C237.477 353.567 234.639 355.8 231.636 358.559C227.287 362.577 224.342 369.129 221.358 374.239C219.252 377.856 215.615 380.138 212.505 382.839C212.193 383.112 211.842 383.187 211.452 383.063L205.084 381.045C204.811 380.96 204.639 380.778 204.567 380.499L197.166 349.481C197.101 349.208 196.932 349.033 196.659 348.955L182.95 345.074C182.657 344.989 182.368 344.992 182.082 345.083L175.958 346.965C175.698 347.05 175.519 346.962 175.422 346.702L169.357 330.291C169.321 330.2 169.317 330.1 169.344 330.006C169.371 329.911 169.428 329.829 169.507 329.77C169.585 329.712 169.681 329.68 169.779 329.681C169.877 329.682 169.972 329.715 170.049 329.775L175.695 333.967C175.961 334.162 176.26 334.26 176.592 334.26L194.612 334.24C194.773 334.24 194.932 334.198 195.072 334.118C195.213 334.039 195.331 333.925 195.415 333.787C195.499 333.649 195.546 333.492 195.552 333.331C195.559 333.17 195.523 333.009 195.45 332.866Z"
@@ -287,6 +298,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Idukki"
               cursor="pointer"
               onClick={() => handleDistrictClick('Idukki')}
@@ -298,6 +310,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Ernakulam"
               cursor="pointer"
               onClick={() => handleDistrictClick('Ernakulam')}
@@ -309,6 +322,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Kottayam"
               cursor="pointer"
               onClick={() => handleDistrictClick('Kottayam')}
@@ -320,6 +334,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Alappuzha"
               cursor="pointer"
               onClick={() => handleDistrictClick('Alappuzha')}
@@ -331,6 +346,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Pathanamthitta"
               cursor="pointer"
               onClick={() => handleDistrictClick('Pathanamthitta')}
@@ -342,6 +358,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Mavelikkara"
               cursor="pointer"
               onClick={() => handleDistrictClick('Mavelikkara')}
@@ -353,6 +370,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Kollam"
               onClick={() => handleDistrictClick('Kollam')}
               d="M306.016 504.209L319.794 522.482C320.015 522.768 320.041 523.074 319.872 523.399L313.3 535.997C313.131 536.309 312.894 536.381 312.588 536.212L297.874 527.826C297.542 527.637 297.211 527.631 296.879 527.806L278.216 537.421C277.904 537.583 277.615 537.547 277.348 537.313L266.847 528.391C266.664 528.24 266.447 528.137 266.214 528.095C265.982 528.052 265.743 528.07 265.52 528.148L244.234 535.666C243.903 535.783 243.61 535.724 243.357 535.49L227.911 521.322C227.638 521.075 227.45 520.773 227.345 520.415L223.923 508.938C223.819 508.587 223.92 508.311 224.225 508.109L228.964 505.018C229.263 504.817 229.595 504.742 229.959 504.794L241.972 506.452C242.368 506.51 242.671 506.712 242.879 507.056L250.046 518.806C250.228 519.112 250.494 519.303 250.845 519.381L256.091 520.61C256.384 520.675 256.644 520.61 256.871 520.415C264.269 514.116 271.598 507.745 278.86 501.303C280.745 499.639 284.421 497.816 289.888 495.833C290.233 495.709 290.421 495.466 290.454 495.102L290.844 491.123C290.857 491.004 290.897 490.889 290.959 490.787C291.022 490.685 291.106 490.598 291.206 490.532C291.306 490.467 291.419 490.425 291.537 490.409C291.654 490.393 291.774 490.404 291.887 490.441L312.383 497.169C312.454 497.193 312.517 497.236 312.566 497.292C312.615 497.349 312.648 497.417 312.662 497.489C312.676 497.562 312.67 497.637 312.645 497.705C312.62 497.774 312.577 497.835 312.52 497.881L306.133 503.166C305.763 503.471 305.724 503.819 306.016 504.209Z"
@@ -363,6 +381,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Attingal"
               cursor="pointer"
               onClick={() => handleDistrictClick('Attingal')}
@@ -374,6 +393,7 @@ const Map = () => {
               }
             />
             <path
+             className="dists"
               id="Thiruvananthapuram"
               cursor="pointer"
               onClick={() => handleDistrictClick('Trivandrum')}
