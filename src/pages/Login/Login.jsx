@@ -30,6 +30,8 @@ const Login = (props) => {
       .then((re) => {
         console.log(re);
         setShowWindow(false);
+        setValue(re.user.email);
+        localStorage.setItem("email", re.user.email);
         props.voteInc();
       })
       .catch((err) => {
@@ -43,6 +45,8 @@ const Login = (props) => {
       .then((re) => {
         console.log(re);
         setShowWindow(false);
+        setValue(re.user.email);
+        localStorage.setItem("email", re.user.email);
         props.voteInc();
       })
       .catch((err) => {
@@ -58,7 +62,7 @@ const Login = (props) => {
   return (
     <>
       {value ? (
-        <div>Already Logged In</div>
+        <h1 className="thanks--vote">Already Logged In</h1>
       ) : (
         <div>
           {showWindow === true ? (
