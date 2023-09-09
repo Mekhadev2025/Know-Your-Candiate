@@ -28,7 +28,8 @@ const District = (props) => {
     const queryParams = new URLSearchParams(location.search);
     const district = queryParams.get("district");
     setSelectedDistrict(district);
-
+    console.log("District=",district)
+  console.log(district)
     async function fetchData() {
       try {
         const response = await fetch(
@@ -37,6 +38,7 @@ const District = (props) => {
         const newRes = await response.json();
         const filteredData = newRes.filter((item) => item.district === district);
         setData(filteredData);
+        console.log(filteredData)
       } catch (error) {
         console.error("Error fetching data:", error);
       }
