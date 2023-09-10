@@ -36,9 +36,9 @@ const Login = (props) => {
     console.log("Users=", users);
   }, [users]);
 
-  const addUserToFirestore = (email) => {
+  const addUserToFirestore = (identifier) => {
     const collectionRef = collection(db, 'users');
-    addDoc(collectionRef, { email })
+    addDoc(collectionRef, { identifier }) // Use 'identifier' to store either email or UID
       .then(response => {
         console.log(response);
       })
@@ -54,10 +54,9 @@ const Login = (props) => {
         console.log("response==", re); 
         setShowWindow(false);
         localStorage.setItem("email", re.user.email);
-        addUserToFirestore(re.user.email);
+        addUserToFirestore(re.user.email); // Send email to Firestore
 
         // Update the value state
-       
         console.log("Email", re.user.email);
         props.voteInc();
       })
@@ -66,38 +65,19 @@ const Login = (props) => {
       });
   };
 
-
-
   const signTwitter = () => {
     const provider = new TwitterAuthProvider();
     signInWithPopup(authentication, provider)
       .then((re) => {
         console.log(re);
         setShowWindow(false);
-        setValue(re.user.email);
+        setValue(re.user.email); // You can set 're.user.uid' if you prefer to use UID
         localStorage.setItem("email", re.user.email);
-        addUserToFirestore(re.user.email);
+        addUserToFirestore(re.user.uid); // Send UID to Firestore
         props.voteInc();
       })
       .catch((err) => {
         console.error(err);
-      });
-  };
-
-  const signFacebook = () => {
-    const provider = new FacebookAuthProvider();
-    signInWithPopup(authentication, provider)
-      .then((re) => {
-        console.log(re);
-        setShowWindow(false);
-        setValue(re.user.email);
-        localStorage.setItem("email", re.user.email);
-        addUserToFirestore(re.user.email);
-        props.voteInc();
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Sign In Not successful");
       });
   };
 
@@ -109,7 +89,6 @@ const Login = (props) => {
     <>
       {value ? (
         <h1 className="thanks--vote">Already logged In</h1>
-         
       ) : (
         <div>
           {showWindow === true ? (
