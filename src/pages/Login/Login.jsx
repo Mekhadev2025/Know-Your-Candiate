@@ -65,6 +65,7 @@ const Login = (props) => {
       .then((re) => {
         console.log("response==", re);
         const email = re.user.email;
+        const name=re.user.name
         localStorage.setItem("identifier", email);
         addUserToFirestore(email);
 

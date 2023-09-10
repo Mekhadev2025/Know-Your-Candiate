@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Card/Card.css";
 
 const Card = (props) => {
-  const [count, setCount] = React.useState(0);
-  useEffect(() => {
-    setCount(props.voteCount);
-  }, [props.voteCount]);
-
   const [selected, setSelected] = useState({});
   const [more, setMore] = useState(true);
+
+  useEffect(() => {
+    console.log(props);
+  }, []);
+
 
   const incrementCount = () => {
     setSelected(props.item);
@@ -22,8 +22,12 @@ const Card = (props) => {
     setMore(!more); // Toggle the value of 'more' (true to false or false to true)
   };
 
+  const cardClassName = `card--container ${more ? "" : "expanded"} ${
+    props.isMaxVote ? "max-vote" : ""
+  }`;
+
   return (
-    <div className={`card--container ${more ? "" : "expanded"}`}>
+    <div className={cardClassName}>
       <img src={props.photo} className="candidate--img" alt={props.name} />
       <div className="candidiate-deets">
         <h3 className="candidate--name">{props.name}</h3>
@@ -37,14 +41,16 @@ const Card = (props) => {
         )}
       </div>
       <img src={props.party} className="party--logo" alt={props.name} />
-      <div className={`candidate--count ${props.isMaxVote ? "max-vote" : ""}`}>
-        {count}
+      <div className="candidate--count" style={{ backgroundColor: props.voteCount == props.maxVote ? '#F0F3F5' : ' #FCE7E5' , color:props.voteCount == props.maxVote ? '#006EB5' : ' #EE311F'}} >
+        {props.voteCount}
       </div>
+
+      <button onClick={incrementCount
+      }
        
-        <button onClick={incrementCount} className="card--btn">
+         className="card--btn">
         Vote
-      </button> 
-      
+      </button>
     </div>
   );
 };
