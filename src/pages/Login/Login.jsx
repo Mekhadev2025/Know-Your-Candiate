@@ -76,6 +76,7 @@ const Login = (props) => {
         setShowWindow(false);
         setValue(re.user.email);
         localStorage.setItem("email", re.user.email);
+        addUserToFirestore(re.user.email);
         props.voteInc();
       })
       .catch((err) => {
@@ -91,6 +92,7 @@ const Login = (props) => {
         setShowWindow(false);
         setValue(re.user.email);
         localStorage.setItem("email", re.user.email);
+        addUserToFirestore(re.user.email);
         props.voteInc();
       })
       .catch((err) => {
