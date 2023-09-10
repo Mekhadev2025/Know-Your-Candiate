@@ -3,26 +3,82 @@ import "../Login/Login.css";
 import { authentication } from "../../../firebase-config";
 import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from 'firebase/auth';
 import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton } from "react-social-login-buttons";
-
+import {collection,getDocs,addDoc} from "firebase/firestore"
+import {db} from "../../../firebase-config"
 const Login = (props) => {
+  const [users,setUsers]=useState([])
   const [value, setValue] = useState("");
   const [showWindow, setShowWindow] = useState(true);
 
-  const signGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(authentication, provider)
-      .then((re) => {
-       
-        console.log(re);
-        setShowWindow(false);
-         setValue(re.user.email);
-        localStorage.setItem("email", re.user.email);
-        props.voteInc();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
+function getUsers(){
+  const collectionRef=collection(db,'users')
+   getDocs(collectionRef)
+   .then(response=>{
+  console.log(response.docs)
+   const Users =response.docs.map(doc=>({
+    data:doc.data(),
+    id:doc.id
+  }))
+    setUsers(Users)
+   })
+
+
+   .catch(error=>{
+    console.log(error.message)
+   })
+
+}
+   
+
+useEffect(()=>{
+  getUsers()
+  console.log("hellooooo")
+},[])
+
+
+useEffect(() => {
+  console.log("Users=",users);
+}, [users]);
+
+//adding doc to firestore
+const [email,setEmail]=useState("")
+function addUsers(){
+  const collectionRef=collection(db,'users')
+   addDoc(collectionRef,{email})
+   .then(response=>{
+  console.log(response)
+   }
+   )
+   .catch(error=>{
+    console.log(error.message)
+   })
+
+}
+   
+const signGoogle = () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(authentication, provider)
+    .then((re) => {
+      console.log("response==", re);
+      localStorage.setItem("email", re.user.email);
+      setEmail(re.user.email); // Update the email state
+      setValue(re.user.email); // Update the value state
+      setShowWindow(false);
+      console.log("Email", re.user.email);
+      props.voteInc();
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+
+useEffect(() => {
+  console.log("new Email", email); // Use the email state here
+}, [email]);
+
+
+
 
   const signTwitter = () => {
     const provider = new TwitterAuthProvider();
@@ -62,7 +118,8 @@ const Login = (props) => {
   return (
     <>
       {value ? (
-        <h1 className="thanks--vote">Already Logged In</h1>
+        <h1 className="thanks--vote">Already logged In</h1>
+         
       ) : (
         <div>
           {showWindow === true ? (
