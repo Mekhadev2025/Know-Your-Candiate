@@ -80,6 +80,7 @@ const Login = (props) => {
       .then((re) => {
         console.log(re);
         console.log("uid", re.user.uid);
+        console.log("Email===",re.user.email)
         const uid = re.user.uid;
         localStorage.setItem("identifier", uid);
         addUserToFirestore(uid);
