@@ -53,7 +53,7 @@ const Login = (props) => {
       .then(re => {
         console.log("response==", re); 
         setShowWindow(false);
-        localStorage.setItem("email", re.user.email);
+        localStorage.setItem("identifier", re.user.email);
         addUserToFirestore(re.user.email); // Send email to Firestore
 
         // Update the value state
@@ -73,7 +73,7 @@ const Login = (props) => {
         console.log("uid",re.user.uid)
         setShowWindow(false);
         setValue(re.user.uid); // You can set 're.user.uid' if you prefer to use UID
-        localStorage.setItem("email", re.user.uid);
+        localStorage.setItem("identifier", re.user.uid);
         addUserToFirestore(re.user.uid); // Send UID to Firestore
         props.voteInc();
       })
@@ -83,7 +83,7 @@ const Login = (props) => {
   };
 
   useEffect(() => {
-    setValue(localStorage.getItem("email"));
+    setValue(localStorage.getItem("identifier"));
   }, []);
 
   return (
