@@ -45,9 +45,7 @@ const Login = (props) => {
         const collectionRef = collection(db, 'users');
         await addDoc(collectionRef, { identifier });
         props.voteInc();
-       
         setShowWindow(false)
-        //  setIsLoggedIn(true)
       }
        else {
         setIsLoggedIn(true)
@@ -92,7 +90,7 @@ const Login = (props) => {
   };
   return (
     <>
-      {isLoggedIn ? (
+      {isLoggedIn && showWindow? (
         <h1 className="thanks--vote">Already voted</h1>
       ) : (
         <div>
