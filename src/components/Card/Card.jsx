@@ -4,6 +4,10 @@ import inc from "../../assets/inc.svg"
 import cpi from "../../assets/cpm.svg"
 import bjp from "../../assets/bjp.png"
 import other from "../../assets/other.png"
+import shashi from "../../assets/tharoor.png"
+import kumm from "../../assets/kummanam.png"
+import divu from "../../assets/divakaran.png"
+import pic from "../../assets/pic.jpg"
 const Card = (props) => {
   const [selected, setSelected] = useState({});
   const [more, setMore] = useState(true);
@@ -24,6 +28,30 @@ const Card = (props) => {
     }
   }, [props.party]); 
 
+    const [candPhoto,setCandPhoto]=useState(null)
+  useEffect(() => {
+  
+
+    if (props.name === "Shashi Tharoor") {
+      setCandPhoto(shashi)
+    } 
+    else if(props.name=="Kummanam Rajasekharan")
+    {
+      setCandPhoto(kumm)
+    }
+    else if(props.name=="C. Divakaran")
+    {
+      setCandPhoto(divu)
+    }
+    else{
+    setCandPhoto(pic)
+    }
+  }, [props.name]); 
+
+
+
+
+
   const incrementCount = () => {
     setSelected(props.item);
     console.log("Selected=", props.item);
@@ -42,7 +70,7 @@ const Card = (props) => {
 
   return (
     <div className={cardClassName}>
-      <img src={props.photo} className="candidate--img" alt={props.name} />
+      <img src={candPhoto} className="candidate--img" alt={props.name} />
       <div className="candidiate-deets">
         <h3 className="candidate--name">{props.name}</h3>
         <p className={`candidiate--desc ${more ? "" : "expanded"}`}>
