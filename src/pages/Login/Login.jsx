@@ -1,107 +1,109 @@
 import React, { useState, useEffect } from "react";
 import "../Login/Login.css";
 import { authentication } from "../../../firebase-config";
-import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from 'firebase/auth';
-import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton } from "react-social-login-buttons";
-import { collection, getDocs, addDoc } from "firebase/firestore"
+import { signInWithPopup, GoogleAuthProvider, TwitterAuthProvider } from 'firebase/auth';
+import { GoogleLoginButton, TwitterLoginButton } from "react-social-login-buttons";
+import { collection, getDocs, addDoc, query, where, getDocs as getDocsByQuery } from "firebase/firestore"
 import { db } from "../../../firebase-config"
 
 const Login = (props) => {
   const [users, setUsers] = useState([]);
-  const [value, setValue] = useState("");
   const [showWindow, setShowWindow] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  function getUsers() {
-    const collectionRef = collection(db, 'users')
-    getDocs(collectionRef)
-      .then(response => {
-        console.log(response.docs)
-        const Users = response.docs.map(doc => ({
-          data: doc.data(),
-          id: doc.id
-        }))
-        setUsers(Users)
-      })
-      .catch(error => {
-        console.log(error.message)
-      })
+  const storedIdentifier = localStorage.getItem("identifier");
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const collectionRef = collection(db, 'users');
+      const response = await getDocs(collectionRef);
+      const Users = response.docs.map(doc => ({
+        data: doc.data(),
+        id: doc.id
+      }));
+      setUsers(Users);
+    };
+    
+    if (storedIdentifier) {
+      setIsLoggedIn(true);
+    }
+
+    getUsers();
+
+  }, [storedIdentifier]);
+
+  const checkUserExistsInFirestore = async (identifier) => {
+    const userQuery = query(collection(db, 'users'), where('identifier', '==', identifier));
+    const querySnapshot = await getDocsByQuery(userQuery);
+    return !querySnapshot.empty;
   }
-
-  useEffect(() => {
-    getUsers()
-    console.log("hellooooo")
-  }, [])
-
-  useEffect(() => {
-    console.log("Users=", users);
-  }, [users]);
-
-  const addUserToFirestore = (identifier) => {
-    const collectionRef = collection(db, 'users');
-    addDoc(collectionRef, { identifier }) // Use 'identifier' to store either email or UID
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error.message);
-      })
+ 
+   const addUserToFirestore = async (identifier) => {
+    try {
+      const exists = await checkUserExistsInFirestore(identifier);
+      if (!exists) {
+        const collectionRef = collection(db, 'users');
+        await addDoc(collectionRef, { identifier });
+        props.voteInc();
+       
+        setShowWindow(false)
+        //  setIsLoggedIn(true)
+      }
+       else {
+        setIsLoggedIn(true)
+   
+        console.log("User exists brooo")
+        
+        
+      }
+    } catch (error) {
+      console.error('Error adding user to Firestore:', error);
+    }
   }
 
   const signGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(authentication, provider)
-      .then(re => {
-        console.log("response==", re); 
-        setShowWindow(false);
-        localStorage.setItem("identifier", re.user.email);
-        addUserToFirestore(re.user.email); // Send email to Firestore
-
-        // Update the value state
-        console.log("Email", re.user.email);
-        props.voteInc();
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
-
-  const signTwitter = () => {
-    const provider = new TwitterAuthProvider();
-    signInWithPopup(authentication, provider)
       .then((re) => {
-        console.log(re);
-        console.log("uid",re.user.uid)
-        setShowWindow(false);
-        setValue(re.user.uid); // You can set 're.user.uid' if you prefer to use UID
-        localStorage.setItem("identifier", re.user.uid);
-        addUserToFirestore(re.user.uid); // Send UID to Firestore
-        props.voteInc();
+        console.log("response==", re);
+        const email = re.user.email;
+        localStorage.setItem("identifier", email);
+        addUserToFirestore(email);
+
       })
       .catch((err) => {
         console.error(err);
       });
   };
-
-  useEffect(() => {
-    setValue(localStorage.getItem("identifier"));
-  }, []);
-
+  
+  const signTwitter = () => {
+    const provider = new TwitterAuthProvider();
+    signInWithPopup(authentication, provider)
+      .then((re) => {
+        console.log(re);
+        console.log("uid", re.user.uid);
+        const uid = re.user.uid;
+        localStorage.setItem("identifier", uid);
+        addUserToFirestore(uid);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
     <>
-      {value ? (
-        <h1 className="thanks--vote">Already logged In</h1>
+      {isLoggedIn ? (
+        <h1 className="thanks--vote">Already voted</h1>
       ) : (
         <div>
-          {showWindow === true ? (
+          {showWindow && (
             <div>
               <h1 className="login--header">Login</h1>
-              {/* <FacebookLoginButton onClick={signFacebook} /> */}
               <TwitterLoginButton onClick={signTwitter} />
               <GoogleLoginButton onClick={signGoogle} />
             </div>
-          ) : (
-            <h1 className="thanks--vote">Thanks For Voting</h1>
           )}
+          {!showWindow && <h1 className="thanks--vote">Thanks For Voting</h1>}
         </div>
       )}
     </>
