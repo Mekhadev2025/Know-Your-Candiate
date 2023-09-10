@@ -70,9 +70,10 @@ const Login = (props) => {
     signInWithPopup(authentication, provider)
       .then((re) => {
         console.log(re);
+        console.log("uid",re.user.uid)
         setShowWindow(false);
-        setValue(re.user.email); // You can set 're.user.uid' if you prefer to use UID
-        localStorage.setItem("email", re.user.email);
+        setValue(re.user.uid); // You can set 're.user.uid' if you prefer to use UID
+        localStorage.setItem("email", re.user.uid);
         addUserToFirestore(re.user.uid); // Send UID to Firestore
         props.voteInc();
       })
@@ -94,7 +95,7 @@ const Login = (props) => {
           {showWindow === true ? (
             <div>
               <h1 className="login--header">Login</h1>
-              <FacebookLoginButton onClick={signFacebook} />
+              {/* <FacebookLoginButton onClick={signFacebook} /> */}
               <TwitterLoginButton onClick={signTwitter} />
               <GoogleLoginButton onClick={signGoogle} />
             </div>
