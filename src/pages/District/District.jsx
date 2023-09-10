@@ -140,7 +140,7 @@ return (
       key={item.id}
       photo={photo}
       name={item.name}
-      party={party}
+      party={item.party}
       voteCount={item.voteCount}
       desc={item.desc}
       incrementTotal={incrementTotal}
