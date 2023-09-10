@@ -125,7 +125,7 @@ return (
     <h1 className="district--name">{selectedDistrict}</h1>
     <div className="cards">
       {isLoading ? (
-        <h2 className="loading">Loading...</h2>
+        <h2 className="no-results">Loading...</h2>
       ) : data.length === 0 ? (
         <h2 className="no-results">Nothing to display</h2>
       ) : (
