@@ -1155,7 +1155,7 @@ const Map = () => {
               <Link to="/district?district=thrissur" value="thrissur">
                 <tspan className="districts" x="839" y="325.2" textDecoration={selectedDistrict=="Thrissur"?"underline":"none"}
                fill={selectedDistrict=="Thrissur"?"blue":"black"}>
-                  {/* 10.Thrissur{" "} */}
+                  10.Thrissur{" "}
                 </tspan>
               </Link>
             </text>
